@@ -1,0 +1,8 @@
+delete  from
+	PUBLIC.UF UF
+where
+	UF.id not in 
+		(
+			select ID_ESTADO
+			from
+				PUBLIC.cidade);
