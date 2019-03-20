@@ -1,0 +1,3 @@
+update public.cidade set nome = 'Lunardelli' where nome = 'Lunardeli';
+update public.cidade set nome = 'Jandaia' where nome = 'Jandaia do Sul';
+update public.cidade set nome = 'Cidade Canção' where nome = 'Maringá';
