@@ -1,0 +1,13 @@
+select
+	sigla,
+	count(*) conta
+from
+	public.uf uf
+	inner join public.cidade cid
+		on  cid.id_estado = uf.id
+	inner join public.recibo rec
+		on  rec.id_cidade = cid.id
+where
+	uf.sigla = 'PR'
+group by 
+	sigla;
