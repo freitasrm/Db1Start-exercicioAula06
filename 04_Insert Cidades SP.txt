@@ -1,0 +1,36 @@
+-- inserindo São Caetano do Sul
+insert into public.cidade (id_estado,nome)
+select
+	uf.id,'São Caetano do Sul'
+from
+	public.uf uf
+	left join public.cidade cid
+		on  cid.id_estado = uf.id
+		and cid.nome = 'São Caetano do Sul'
+where
+	cid.id is null
+and uf.sigla = 'SP'; 
+-- inserindo São Bernardo do Campo
+insert into public.cidade (id_estado,nome)
+select
+	uf.id,'São Bernardo do Campo'
+from
+	public.uf uf
+	left join public.cidade cid
+		on  cid.id_estado = uf.id
+		and cid.nome = 'São Bernardo do Campo'
+where
+	cid.id is null
+and uf.sigla = 'SP'; 
+-- inserindo Santo André
+insert into public.cidade (id_estado,nome)
+select
+	uf.id,'Santo André'
+from
+	public.uf uf
+	left join public.cidade cid
+		on  cid.id_estado = uf.id
+		and cid.nome = 'Santo André'
+where
+	cid.id is null
+and uf.sigla = 'SP';
