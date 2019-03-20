@@ -1,0 +1,2 @@
+alter table public.endereco
+ADD column tipo_endereco varchar(30) CHECK (tipo_endereco IN ('COMERCIAL', 'RESIDENCIAL'));
