@@ -1,0 +1,36 @@
+-- inserir 2 novas pessoas
+insert into public.pessoa (id_usuario,nome,cpf) values (null,'Mateus Bucioli',22222222222);
+insert into public.pessoa (id_usuario,nome,cpf) values (null,'Maiko Cunha',33333333333);
+-- inserir dois endereços de SP
+insert into public.endereco (id_cidade,id_pessoa,logradouro,numero,cep,complemento,tipo_endereco)
+select
+	cid.id,
+	pes.id,
+	'Avenida Horácio Racanello Filho' logradouro,
+	2220 numero,
+	87013100 cep,
+	'Laboratório de Informática 01' complemento,
+	case 
+		row_number() over (partition by pes.id) 
+		when 1 
+			then 'COMERCIAL' 
+			else 'RESIDENCIAL'
+	end tipo_endereco
+from
+	public.pessoa pes
+	inner join public.uf uf
+		on  uf.sigla = 'SP'
+	inner join public.cidade cid
+		on  cid.id_estado = uf.id
+	left join public.endereco ende
+		on  ende.id_pessoa = pes.id
+where
+	cid.id in
+		(
+			select id 
+			from
+				public.cidade
+			where id_estado = uf.id
+			
+			limit 2)
+and ende.id is null;
