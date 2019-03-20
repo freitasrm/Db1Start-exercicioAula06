@@ -1,0 +1,49 @@
+insert into public.recibo (id_cliente,id_emitente,id_cidade,sequencia,data,assinatura,valor)
+select
+	cli.id_pessoa,
+	endEmi.id_pessoa,
+	endEmi.id_cidade,
+	coalesce((select max(sequencia) from public.recibo),0)+
+	row_number() over (order by cli.id) sequencia,
+	current_date,
+	upper(cli.nome),
+	row_number() over (order by cli.id) + 100 valor
+from
+	public.endereco endEmi
+	inner join 
+		(select 
+			id_estado,
+			min(endCli.id) id,
+			row_number() over() seq
+		from
+			public.endereco endCli
+			inner join public.cidade cidCli
+				on  endCli.id_cidade = cidCli.id
+		group by
+			id_estado
+		) emi		
+		on  emi.id = endEmi.id
+	inner join public.uf ufCli
+		on  ufCli.sigla = 'PR'
+	inner join
+		(select 
+			cli.id,
+			cli.nome,
+			endCli.id_pessoa,
+			max(id_cidade) id_cidade,
+			max(id_estado) id_estado,
+			row_number() over() seq
+		from
+			public.pessoa cli
+			inner join public.endereco endCli
+				on  cli.id = endCli.id_pessoa
+			inner join public.cidade cidCli
+				on  endCli.id_cidade = cidCli.id
+		group by
+			cli.id,
+			cli.nome,
+			endCli.id_pessoa
+		) cli
+		on  cli.id_estado = ufCli.id
+		and cli.seq = emi.seq
+limit 2;
