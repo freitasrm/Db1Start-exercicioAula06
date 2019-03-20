@@ -1,0 +1,39 @@
+-- necessario incluir pessoa não usuario
+alter table public.pessoa
+alter column id_usuario drop not null;
+
+-- inserir 3 pessoas
+insert into public.pessoa (id_usuario,nome,cpf) values (null,'Rodrigo Martins de Freitas',11111111111);
+insert into public.pessoa (id_usuario,nome,cpf) values (null,'Cindy Elis Tucholski',55555555555);
+insert into public.pessoa (id_usuario,nome,cpf) values (null,'Danilo Martins de Freitas',99999999999);
+
+-- Inserindo 2 endereços
+insert into public.endereco (id_cidade,id_pessoa,logradouro,numero,cep,complemento,tipo_endereco)
+select
+	cid.id,
+	pes.id,
+	'Avenida Horácio Racanello Filho' logradouro,
+	2220 numero,
+	87013100 cep,
+	'Laboratório de Informática 01' complemento,
+	case 
+		row_number() over (partition by pes.id) 
+		when 1 
+			then 'COMERCIAL' 
+			else 'RESIDENCIAL'
+	end tipo_endereco
+from
+	public.pessoa pes
+	inner join public.uf uf
+		on  uf.sigla = 'PR'
+	inner join public.cidade cid
+		on  cid.id_estado = uf.id
+where
+	cid.id in
+		(
+			select id 
+			from
+				public.cidade
+			where id_estado = uf.id
+			
+			limit 2);
