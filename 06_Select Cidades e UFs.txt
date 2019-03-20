@@ -1,0 +1,10 @@
+select
+	cid.nome,
+	uf.sigla
+from
+	public.cidade cid
+	inner join public.uf uf
+		on  uf.id = cid.id_estado
+order by
+	uf.sigla asc,
+	cid.nome asc;
