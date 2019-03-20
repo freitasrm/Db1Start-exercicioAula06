@@ -1,0 +1,33 @@
+with pes
+as (
+	select distinct
+		pes.id,
+		pes.nome,
+		uf.sigla
+	from
+		public.pessoa pes
+		inner join endereco ende
+			on  ende.id_pessoa = pes.id
+		inner join cidade cid
+			on  cid.id = ende.id_cidade
+		inner join uf uf
+			on  uf.id = cid.id_estado
+)
+select
+	rec.sequencia,
+	to_char(rec.data,'dd/MM/yyyy') "data",
+	rec.valor,
+	cli.nome,
+	cli.sigla,
+	emi.nome,
+	emi.sigla
+from
+	public.recibo rec
+	inner join pes cli
+		on  cli.id = rec.id_cliente
+	inner join pes emi
+		on  emi.id = rec.id_emitente
+order by
+	rec.data asc,
+	cli.nome asc,
+	emi.nome asc;
