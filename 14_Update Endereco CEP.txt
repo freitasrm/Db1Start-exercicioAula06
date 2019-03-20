@@ -1,1 +1,1 @@
-update public.endereco set cep = 00000000;
+update public.endereco set cep = '00000000' where tipo_endereco = 'RESIDENCIAL';
