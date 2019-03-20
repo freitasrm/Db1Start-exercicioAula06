@@ -1,0 +1,133 @@
+-- SC
+	-- Chapecó
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Chapecó' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Chapecó'
+	where sigla = 'SC'
+	and cid.id is null;
+	-- Blumenau
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Blumenau' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Blumenau'
+	where sigla = 'SC'
+	and cid.id is null;
+	-- Joinville
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Joinville' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Joinville'
+	where sigla = 'SC'
+	and cid.id is null;
+-- PR
+	-- Curitiba
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Curitiba' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Curitiba'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- Maringá
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Maringá' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Maringá'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- Lunardeli
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Lunardeli' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Lunardeli'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- Apucarana
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Apucarana' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Apucarana'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- Santa fé
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Santa fé' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Santa fé'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- São Miguel do Iguaçu
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'São Miguel do Iguaçu' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'São Miguel do Iguaçu'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- Arapongas
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Arapongas' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Arapongas'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- Ponta Grossa
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Ponta Grossa' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Ponta Grossa'
+	where sigla = 'PR'
+	and cid.id is null;
+	-- Jandaia do Sul
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Jandaia do Sul' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Jandaia do Sul'
+	where sigla = 'PR'
+	and cid.id is null;
+-- SP
+	-- Ribeirão Preto
+	insert into  public.cidade (id_estado,nome)
+	select uf.id,'Ribeirão Preto' 
+	from 
+		public.uf uf 
+		left join public.cidade cid
+			on  cid.id_estado = uf.id
+			and cid.nome = 'Ribeirão Preto'
+	where sigla = 'SP'
+	and cid.id is null;
