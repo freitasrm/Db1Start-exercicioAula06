@@ -1,0 +1,9 @@
+select
+	uf.sigla,
+	count(*) quant_cidades
+from
+	public.cidade cid
+	inner join public.uf uf
+		on  uf.id = cid.id_estado
+group by 
+	uf.sigla;
