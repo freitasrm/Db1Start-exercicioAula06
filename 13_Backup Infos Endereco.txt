@@ -1,0 +1,17 @@
+select *  from
+	PUBLIC.endereco
+where
+	id_pessoa in 
+		(
+			select id_pessoa
+			from
+				public.endereco ende
+				inner join PUBLIC.cidade cid
+					on  cid.id = ende.id_cidade
+			where
+				nome = 'Ribeirão Preto');
+
+18	14	4	Avenida Horácio Racanello Filho	2220	87013100	Laboratório de Informática 01	RESIDENCIAL
+20	14	5	Avenida Horácio Racanello Filho	2220	87013100	Laboratório de Informática 01	RESIDENCIAL
+25	13	4	Avenida Horácio Racanello Filho	2220	87013100	Laboratório de Informática 01	COMERCIAL
+26	13	5	Avenida Horácio Racanello Filho	2220	87013100	Laboratório de Informática 01	COMERCIAL

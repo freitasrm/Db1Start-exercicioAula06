@@ -1,0 +1,18 @@
+-- Delete enderecos de quem mora em ribeirao preto
+delete from
+	PUBLIC.endereco
+where
+	id_pessoa in 
+		(
+			select id_pessoa
+			from
+				public.endereco ende
+				inner join PUBLIC.cidade cid
+					on  cid.id = ende.id_cidade
+			where
+				nome = 'Ribeirão Preto');
+-- delete de pessosas identificadas em ribeirão preto (sem endereço)
+delete from
+	public.pessoa pes
+where
+	id in (4,5);
